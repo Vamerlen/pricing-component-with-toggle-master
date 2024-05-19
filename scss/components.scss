@@ -1,0 +1,94 @@
+// I made a few changes of this accessible toggle switches button to match the design
+//  This accesssible toggle switches button is from - source: - https://www.sarasoueidan.com/blog/toggle-switch-design/
+
+.main__toggle {
+    border: none;
+    padding: 0;
+    white-space: nowrap;
+    color: $color-secondary-dark;
+  
+    & legend {
+      font-size: 2px;
+      opacity: 0;
+      position: absolute;
+    }
+  
+    & label {
+      user-select: none;
+      display: inline-block;
+      line-height: 2;
+      position: relative;
+      z-index: 2;
+      cursor: pointer;
+  
+      &:first-of-type {
+        padding-right: 6em;
+      }
+  
+      &:last-child {
+        margin-left: -4.25em;
+        padding-left: 6em;
+      }
+  
+      &:first-of-type:before,
+      &:first-of-type:after {
+        content: "";
+        height: 1.7em;
+        overflow: hidden;
+        pointer-events: none;
+        position: absolute;
+        vertical-align: middle;
+      }
+  
+      &:first-of-type:before {
+        background: $color-secondary-light;
+        border-radius: 100%;
+        position: absolute;
+        top: 13%;
+        right: 0.1em;
+        transform: translateX(0em);
+        transition: transform 0.2s ease-in-out;
+        width: 1.7em;
+        z-index: 2;
+        box-shadow: 0 1em 1.5em rgba(0, 0, 0, 0.2);
+      }
+  
+      &:first-of-type:after {
+        background-image: linear-gradient(
+          to bottom right,
+          $color-primary-light,
+          $color-primary-dark
+        );
+        border-radius: 2em;
+        margin: 0 2em;
+        transition: background 0.2s ease-in-out;
+        width: 4.2em;
+        height: 2.2em;
+      }
+    }
+  
+    & input {
+      opacity: 0;
+      position: absolute;
+  
+      &:first-of-type:checked ~ label:first-of-type:before {
+        transform: translateX(-1.9em);
+      }
+  
+      &:last-of-type:checked ~ label:last-of-type {
+        z-index: 1;
+      }
+    }
+  }
+  
+  button {
+    width: 100%;
+    font-weight: 300;
+    font-size: clamp(0.9rem, calc(0.6vw + 0.675rem), 1.1rem);
+    padding: 0.7em 0;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
